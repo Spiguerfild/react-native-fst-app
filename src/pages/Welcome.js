@@ -19,8 +19,8 @@ export function Welcome() {
         Nós cuidamos de lembrar você sempre que precisar
       </Text>
 
-      <Button title='ola' />
-      <Button title='tst' />
+      <Button title='>' />
+
     </SafeAreaView>
 
   );

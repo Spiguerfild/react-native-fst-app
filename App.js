@@ -1,12 +1,19 @@
 import React from 'react';
-import { Welcome } from './src/pages/Welcome';
+import Routes from './src/routes';
 import { useFonts, Inter_400Regular, Inter_600SemiBold } from '@expo-google-fonts/inter'
+import AppLoading from 'expo-app-loading';
 export default function App() {
-  return (
-    const [fontsLoaded] = useFonts({
+
+  const [fontsLoaded] = useFonts({
     Inter_400Regular, Inter_600SemiBold
-  })
-    < Welcome />
+  });
+
+  if (!fontsLoaded)
+    return <AppLoading />
+
+  return (
+
+    < Routes />
   );
 }
 

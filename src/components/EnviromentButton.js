@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const EnviromentButton = (props) => {
   const { title,
@@ -11,7 +12,7 @@ export const EnviromentButton = (props) => {
 
 
   return (
-    <TouchableOpacity style={[
+    <RectButton style={[
       styles.container,
       active && styles.containerActive
     ]} {...rest}>
@@ -22,7 +23,7 @@ export const EnviromentButton = (props) => {
         {title}
       </Text>
 
-    </TouchableOpacity>
+    </RectButton>
 
   );
 }
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
-    marginRight: 5
+    marginHorizontal: 5
   },
   containerActive: {
 

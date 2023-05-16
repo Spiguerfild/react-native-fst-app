@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.create({
+const api = axios.create({
   baseURL: 'http://10.1.1.162:3333'
 })
 

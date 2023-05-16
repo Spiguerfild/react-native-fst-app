@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
@@ -35,32 +35,34 @@ export const UserIdentification = () => {
 
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-        <View style={styles.content}>
-          <View style={styles.form}>
-            <View style={styles.header}>
-              <Text style={styles.emoji}>
-                {isFilled ? '😀' : '🙂'}
-              </Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.content}>
+            <View style={styles.form}>
+              <View style={styles.header}>
+                <Text style={styles.emoji}>
+                  {isFilled ? '😀' : '👉👈'}
+                </Text>
 
-              <Text style={styles.title}>
-                Como podemos{'\n'} chamar você?
-              </Text>
+                <Text style={styles.title}>
+                  Como podemos{'\n'} chamar você?
+                </Text>
+              </View>
+              <TextInput placeholder='Digite seu nome'
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && { borderColor: colors.green }
+                ]}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange} />
+              <View style={styles.footer}>
+                <Button onPress={handleSubmit} text='apenas' />
+              </View>
+
+
             </View>
-            <TextInput placeholder='Digite seu nome'
-              style={[
-                styles.input,
-                (isFocused || isFilled) && { borderColor: colors.green }
-              ]}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              onChangeText={handleInputChange} />
-            <View style={styles.footer}>
-              <Button onPress={handleSubmit} text='apenas' />
-            </View>
-
-
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

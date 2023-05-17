@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { SvgFromUri } from 'react-native-svg';
 import { EnviromentButton } from './EnviromentButton';
 import colors from '../styles/colors';
@@ -10,14 +10,14 @@ export const PlantCardPrimary = (props) => {
 
   const { data, ...rest } = props
   return (
-    <RectButton style={styles.container}
+    <TouchableOpacity style={styles.container}
       {...rest}>
 
       <SvgFromUri uri={data.photo} width={70} height={70} />
 
       <Text style={styles.text}> {data.name}</Text>
 
-    </RectButton>
+    </TouchableOpacity>
   );
 }
 

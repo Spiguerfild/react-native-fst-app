@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { RectButton } from 'react-native-gesture-handler';
+
 
 export const EnviromentButton = (props) => {
   const { title,
@@ -11,11 +11,14 @@ export const EnviromentButton = (props) => {
   } = props;
 
 
+
+
   return (
-    <RectButton style={[
+    <TouchableOpacity style={[
       styles.container,
       active && styles.containerActive
-    ]} {...rest}>
+    ]}  {...rest}
+    >
 
       <Text style={[
         styles.text,
@@ -23,7 +26,7 @@ export const EnviromentButton = (props) => {
         {title}
       </Text>
 
-    </RectButton>
+    </TouchableOpacity>
 
   );
 }

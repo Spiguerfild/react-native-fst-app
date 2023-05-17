@@ -13,7 +13,20 @@ export const PlantSelect = () => {
 
   const [enviroment, setEnviroment] = useState([])
   const [plants, setPlants] = useState([])
-  // const [enviromentSelected, setEnviromentSelected] = useState('bedroom')
+  const [filteredPlants, setFilteredPlants] = useState([])
+  const [enviromentSelected, setEnviromentSelected] = useState('all')
+
+
+  const handleEnviromentSelected = (teste) => {
+    setEnviromentSelected(teste)
+    if (teste === 'all') return setFilteredPlants(plants);
+
+    const filtered = plants.filter(plant =>
+      plant.environments.includes(teste)
+    )
+    setFilteredPlants(filtered)
+
+  }
 
   useEffect(() => {
 
@@ -49,18 +62,20 @@ export const PlantSelect = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+
         <Header />
         <Text style={styles.title}>Em qual ambiente </Text>
         <Text style={styles.subtitle}>você quer colocar sua planta?</Text>
       </View>
       <View>
+
         <FlatList
           data={enviroment}
           renderItem={({ item }) => (
             <EnviromentButton
               title={item.title}
-            // active={item.key === enviromentSelected}
-
+              active={item.key === enviromentSelected}
+              onPress={() => handleEnviromentSelected(item.key)}
             />
           )}
           horizontal
@@ -70,11 +85,11 @@ export const PlantSelect = () => {
       </View>
 
       <View style={styles.plants}>
-        {console.log(plants)}
+        {/* {console.log(plants)} */}
         <FlatList
           showsVerticalScrollIndicator={false}
           numColumns={2}
-          data={plants}
+          data={filteredPlants}
           renderItem={({ item }) => (
             <PlantCardPrimary data={item} />
 
